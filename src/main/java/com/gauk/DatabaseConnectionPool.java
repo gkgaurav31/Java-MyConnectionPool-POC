@@ -65,15 +65,8 @@ public class DatabaseConnectionPool {
 
     // return
     public synchronized void returnConnectionToPool(Connection connection) throws InterruptedException {
-
-        if(connectionPool.size() == connectionPool.size()){
-            wait();
-        }
-
         connectionPool.add(connection);
-
         notifyAll();
-
     }
 
 }
